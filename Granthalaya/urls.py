@@ -1,7 +1,6 @@
 from django.urls import path,include
-from .views import * 
-from rest_framework_simplejwt.views import TokenRefreshView
+from .views import BookView
 
 urlpatterns = [
-    path("",home,name="home")
+    path("",BookView.as_view(),name="Book detales")
 ]
