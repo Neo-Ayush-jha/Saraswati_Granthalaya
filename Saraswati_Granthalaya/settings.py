@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'Granthalaya',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -69,6 +71,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Saraswati_Granthalaya.wsgi.application'
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 
 # Database
@@ -76,14 +83,12 @@ WSGI_APPLICATION = 'Saraswati_Granthalaya.wsgi.application'
 
 DATABASES = {
     'default': {
-        'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Saraswati_Granthalaya',
+        'NAME': 'Granthalaya',
         'USER': 'root',
         'PASSWORD': '',
         'HOST':'localhost',
         'PORT':'3306',
-    }
     }
 }
 
