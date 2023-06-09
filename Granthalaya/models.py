@@ -9,4 +9,12 @@ class Book(models.Model):
     price=models.CharField(max_length=150)
     discount_price=models.CharField(max_length=150)
     cover_image=models.ImageField(upload_to="Book-photo/",null=True,blank=True)
-    status=models.BooleanField(default=None,blank=True,null=True)
+    status=models.BooleanField(default=0,blank=True,null=True,choices=((1, 'Available'), (0, 'Unavailable')))
+    def __str__(self):
+        return self.title
+    def descount_price(self):
+        result=((self.price-self.discount_price))
+        return f"%.2f"% result
+    def savePrice(self):
+        result=((self.price-self.discount_price)/self.price)*100
+        return f"%.2f"% result
