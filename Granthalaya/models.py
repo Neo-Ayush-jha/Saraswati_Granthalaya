@@ -1,9 +1,15 @@
 from django.db import models
 
+
+class Category(models.Model):
+    c_title=models.CharField(max_length=100)
+    c_discription=models.CharField(max_length=250)
+    def __str__(self):
+        return self.c_title
 class Book(models.Model):
     title=models.CharField(max_length=150)
     author=models.CharField(max_length=150)
-    category=models.CharField(max_length=150)
+    category=models.ForeignKey(Category,on_delete=models.CASCADE)
     isbn=models.BigIntegerField()
     description=models.TextField()
     price=models.CharField(max_length=150)
