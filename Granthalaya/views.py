@@ -44,3 +44,5 @@ class CategoryView(APIView):
             return success_response(data=serializer.data,message='Data added successfully.')
         else:
             return Response(serializer.errors, status=400)
+
+# Anish work
