@@ -44,3 +44,24 @@ class CategoryView(APIView):
             return success_response(data=serializer.data,message='Data added successfully.')
         else:
             return Response(serializer.errors, status=400)
+
+# Anish work
+
+class UserView(APIView):
+    user = User.objects.all()
+    serializer = UserSerializer(user,many=True)
+
+    def get(self,req):
+        return success_response(data = self.serializer.data,message="User Created")
+
+    def post(self,req):
+        serializer = UserSerializer(data= req.data)
+        if serializer.is_valid():
+            serializer.save()
+            return success_response(data = self.serializer.data,message="User Added")
+        else:
+            return Response(serializer.errors,status=400)
+
+
+
+
